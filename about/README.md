@@ -14,7 +14,7 @@
 
 ## Una pregunta que me interesa explorar
 
-¿El Lapislázuli como material se puede utilizar en manufatura aditiva?
+Como se comportan los materiales
 
 ## Algo que me inspira
 
@@ -26,7 +26,7 @@ El desconocimiento tecnico en las licitaciones públicas
 
 ## Links
 
-- [Referencia 1](https://example.com)
+- [Referencia 1](https://gobierno.uchile.cl/facultad/departamentos/administracion-y-gestion-publica)
 - [Referencia 2](https://example.com)
 
 > No es necesario publicar información personal que no quieras compartir. Este README será parte de un repositorio público durante el laboratorio.
