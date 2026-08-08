@@ -26,7 +26,7 @@ El desconocimiento tecnico en las licitaciones públicas
 
 ## Links
 
-- [Referencia 1](https://gobierno.uchile.cl/facultad/departamentos/administracion-y-gestion-publica)
-- [Referencia 2](https://example.com)
+ [Referencia Adm Pública](https://gobierno.uchile.cl)
+
 
 > No es necesario publicar información personal que no quieras compartir. Este README será parte de un repositorio público durante el laboratorio.
