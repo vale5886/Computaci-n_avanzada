@@ -18,7 +18,7 @@ Como se comportan los materiales
 
 ## Algo que me inspira
 
-El desconocimiento tecnico en las licitaciones públicas 
+El desconocimiento técnico en las licitaciones públicas 
 
 
 ![lapislázuli](../assets/images/lapislazuli.png)
