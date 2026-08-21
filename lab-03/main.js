@@ -240,10 +240,14 @@ function crearModuloEstacion(estacion) {
   // bicicletas disponibles → fracción llena.
   const alturaBicicletas = Math.max(0.08, alturaTotal * ocupacion);
 
-  // REGLA 3:
-  // porcentaje de ocupación → ancho del módulo.
+  // REGLA 3 (experimento LAB03):
+  // proporción de anclajes libres → ancho del módulo.
+  // Una estación más ancha tiene mayor disponibilidad relativa para devolver bicicletas.
+  const proporcionAnclajesLibres =
+    estacion.capacidad > 0 ? estacion.anclajes_libres / estacion.capacidad : 0;
+
   const ancho =
-    (0.55 + ocupacion * 0.75) *
+    (0.55 + proporcionAnclajesLibres * 0.75) *
     parametros.escalaAncho;
 
   const grupo = new THREE.Group();
