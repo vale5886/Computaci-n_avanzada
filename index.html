@@ -6,6 +6,7 @@
   <meta name="description" content="Portafolio del curso Computación Avanzada — Valeska López Sepúlveda">
   <title>Computación Avanzada — Valeska López Sepúlveda</title>
   <link rel="stylesheet" href="styles.css">
+  <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
 </head>
 <body>
   <main class="page">
@@ -43,6 +44,21 @@
         <img src="assets/images/lapislazuli.png" alt="Lapislázuli">
         <figcaption>Lapislázuli — exploración material.</figcaption>
       </figure>
+    </section>
+
+    <section class="block">
+      <h2>Modelo 3D</h2>
+      <p>Modelo 3D incorporado al portafolio del curso para su visualización interactiva directamente en el navegador.</p>
+      <model-viewer
+        class="model"
+        src="assets/models/tiny_planet_friends_3d-potted-plant-2930(2).glb"
+        alt="Modelo 3D de planta en macetero"
+        camera-controls
+        touch-action="pan-y"
+        auto-rotate
+        shadow-intensity="1"
+        exposure="1">
+      </model-viewer>
     </section>
 
     <section class="block lab-section">
