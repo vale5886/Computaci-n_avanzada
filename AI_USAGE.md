@@ -4,6 +4,14 @@ Documenta de manera breve cuándo y para qué utilizaste asistentes de IA. El ob
 
 ## Registro
 
+### 2026-08-21 - LAB03 representación de datos
+
+**Herramienta / agente:** ChatGPT  
+**Qué pedí:** Revisar la pauta de LAB03, corregir la estructura del repositorio y modificar una sola regla de representación sin alterar el resto del sistema.  
+**Qué cambió en el proyecto:** LAB03 quedó integrado en `/lab-03/`. Se cambió la regla del ancho: antes representaba el porcentaje de ocupación y ahora representa la proporción de anclajes libres respecto de la capacidad de cada estación. También se actualizó la leyenda y el README para que el mapping sea explícito.  
+**Qué revisé o corregí manualmente:** Verifiqué que la URL pública de `/lab-03/` funciona en el navegador antes de aplicar la modificación.  
+**Qué aprendí / qué error apareció:** Una misma fuente de datos puede producir lecturas distintas según el mapping elegido; cambiar una regla cambia el significado de la geometría, no solo su apariencia.
+
 ### 2026-08-20 - LAB02 campo generativo
 
 **Herramienta / agente:** ChatGPT  
