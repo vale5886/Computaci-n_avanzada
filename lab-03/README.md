@@ -93,13 +93,13 @@ bicicletas disponibles / capacidad → volumen ocupado
 
 La geometría clara muestra cuánta capacidad está actualmente ocupada por bicicletas.
 
-### 4 — Ancho
+### 4 — Ancho · modificación LAB03
 
 ```text
-porcentaje de ocupación → ancho
+anclajes libres / capacidad → ancho
 ```
 
-Una estación con mayor ocupación también aumenta ligeramente su presencia horizontal.
+Una estación con mayor disponibilidad relativa de anclajes libres aumenta su presencia horizontal. Esta regla permite leer con mayor claridad dónde existe más espacio disponible para devolver bicicletas.
 
 ## Dataset local de respaldo
 
