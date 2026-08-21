@@ -91,13 +91,26 @@ escena.add(grilla);
 const grupoCampo = new THREE.Group();
 escena.add(grupoCampo);
 
-const geometriaModulo = new THREE.BoxGeometry(0.76, 1, 0.76);
+// Cambio 1: usamos esferas en vez de cubos.
+const radioModulo = 0.38;
+const geometriaModulo = new THREE.SphereGeometry(radioModulo, 24, 16);
 
 const materialModulo = new THREE.MeshStandardMaterial({
   color: 0xd7d2c8,
   roughness: 0.58,
   metalness: 0.03,
 });
+
+// Herramientas para saber dónde está el cursor sobre el plano del campo.
+const raycaster = new THREE.Raycaster();
+const puntero = new THREE.Vector2();
+const planoInteraccion = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
+const puntoCursor = new THREE.Vector3();
+let cursorActivo = false;
+
+// Distancia y altura del efecto de "huida" del cursor.
+const radioHuida = 3.2;
+const elevacionHuida = 3.2;
 
 // ======================================================
 // 04 — REGLAS GENERATIVAS
@@ -137,6 +150,7 @@ function generarCampo() {
 
   const ancho = (parametros.columnas - 1) * parametros.separacion;
   const profundidad = (parametros.filas - 1) * parametros.separacion;
+  const ahora = performance.now();
 
   for (let columna = 0; columna < parametros.columnas; columna++) {
     for (let fila = 0; fila < parametros.filas; fila++) {
@@ -148,16 +162,20 @@ function generarCampo() {
 
       const modulo = new THREE.Mesh(geometriaModulo, materialModulo);
 
-      // Escalamos solo en Y para modificar la altura.
-      modulo.scale.y = altura;
+      // La esfera conserva su forma. La regla de altura decide su posición vertical.
+      const alturaBase = altura + radioModulo;
+      modulo.position.set(x, alturaBase, z);
 
-      // BoxGeometry crece hacia arriba y hacia abajo desde su centro.
-      // Por eso elevamos el módulo la mitad de su altura.
-      modulo.position.set(x, altura / 2, z);
-
+      // La rotación se conserva para mantener la estructura del ejercicio.
+      // En una esfera no cambia visualmente su apariencia.
       modulo.rotation.y = rotacion;
       modulo.castShadow = true;
       modulo.receiveShadow = true;
+
+      // Cambio 2: guardamos datos para producir un pequeño rebote al regenerar.
+      modulo.userData.alturaBase = alturaBase;
+      modulo.userData.inicioRebote = ahora;
+      modulo.userData.desplazamientoCursor = 0;
 
       grupoCampo.add(modulo);
     }
@@ -168,6 +186,17 @@ function limpiarCampo() {
   while (grupoCampo.children.length > 0) {
     grupoCampo.remove(grupoCampo.children[0]);
   }
+}
+
+// Pequeña caída con rebote que se va apagando suavemente.
+function calcularRebote(modulo, ahora) {
+  const tiempo = (ahora - modulo.userData.inicioRebote) / 1000;
+
+  if (tiempo < 0 || tiempo > 1.6) {
+    return 0;
+  }
+
+  return 1.5 * Math.exp(-3.2 * tiempo) * Math.cos(10.5 * tiempo);
 }
 
 // ======================================================
@@ -260,12 +289,57 @@ document.querySelector("#restablecer").addEventListener("click", () => {
   generarCampo();
 });
 
+// Cambio 3: calculamos el punto del campo que está bajo el cursor.
+renderer.domElement.addEventListener("pointermove", (event) => {
+  const rect = renderer.domElement.getBoundingClientRect();
+
+  puntero.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+  puntero.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+  raycaster.setFromCamera(puntero, camara);
+  cursorActivo = raycaster.ray.intersectPlane(planoInteraccion, puntoCursor) !== null;
+});
+
+renderer.domElement.addEventListener("pointerleave", () => {
+  cursorActivo = false;
+});
+
 // ======================================================
 // 08 — BUCLE DE ANIMACIÓN
 // ======================================================
 
 function animar() {
   requestAnimationFrame(animar);
+
+  const ahora = performance.now();
+
+  grupoCampo.children.forEach((modulo) => {
+    const rebote = calcularRebote(modulo, ahora);
+    let objetivoCursor = 0;
+
+    if (cursorActivo) {
+      const dx = modulo.position.x - puntoCursor.x;
+      const dz = modulo.position.z - puntoCursor.z;
+      const distanciaCursor = Math.sqrt(dx * dx + dz * dz);
+
+      if (distanciaCursor < radioHuida) {
+        const cercania = 1 - distanciaCursor / radioHuida;
+        objetivoCursor = cercania * elevacionHuida;
+      }
+    }
+
+    // La esfera sube al acercarse el cursor y vuelve suavemente al alejarlo.
+    modulo.userData.desplazamientoCursor = THREE.MathUtils.lerp(
+      modulo.userData.desplazamientoCursor,
+      objetivoCursor,
+      0.12
+    );
+
+    modulo.position.y =
+      modulo.userData.alturaBase +
+      rebote +
+      modulo.userData.desplazamientoCursor;
+  });
 
   controlesOrbita.update();
   renderer.render(escena, camara);
