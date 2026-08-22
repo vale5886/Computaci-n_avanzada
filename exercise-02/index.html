@@ -43,10 +43,10 @@
         <div id="scene" class="scene" aria-label="Visualización tridimensional de actividades económicas"></div>
 
         <div class="legend">
-          <div><span class="legend-icon tower-icon"></span><strong>Actividad económica</strong> → posición</div>
-          <div><span class="legend-icon height-icon"></span><strong>Riesgo no óptimo</strong> → altura 1–8 u</div>
-          <div><span class="legend-icon width-icon"></span><strong>Centros evaluados</strong> → ancho 0,8–3 u</div>
-          <div><span class="legend-gradient"></span><strong>Color</strong> → refuerzo visual del riesgo</div>
+          <div><span class="legend-icon tower-icon"></span><strong>Cada torre</strong> representa una actividad económica</div>
+          <div><span class="legend-icon height-icon"></span><strong>Más alta</strong> = mayor riesgo psicosocial</div>
+          <div><span class="legend-icon width-icon"></span><strong>Más ancha</strong> = más centros evaluados</div>
+          <div><span class="legend-gradient"></span><strong>Color más intenso</strong> = mayor riesgo</div>
         </div>
       </div>
 
@@ -54,7 +54,8 @@
         <section class="card selected-card">
           <p class="card-kicker">SECTOR SELECCIONADO</p>
           <h2 id="selectedName">Selecciona una torre</h2>
-          <dl class="metrics">
+
+          <dl class="metrics data-metrics">
             <div>
               <dt>Riesgo no óptimo</dt>
               <dd id="selectedRisk">—</dd>
@@ -63,16 +64,31 @@
               <dt>Centros evaluados</dt>
               <dd id="selectedCenters">—</dd>
             </div>
-            <div>
-              <dt>Altura visual</dt>
-              <dd id="selectedHeight">—</dd>
-            </div>
-            <div>
-              <dt>Ancho visual</dt>
-              <dd id="selectedWidth">—</dd>
-            </div>
           </dl>
-          <p id="selectedReading" class="reading">Haz clic sobre una torre para ver sus datos reales y su traducción visual.</p>
+
+          <div class="visual-explainer">
+            <p class="visual-explainer-title">¿CÓMO LEER ESTA TORRE?</p>
+            <div class="visual-explainer-grid">
+              <div class="visual-box visual-height">
+                <span class="visual-symbol" aria-hidden="true">↕</span>
+                <div>
+                  <span class="visual-label">ALTURA DE LA TORRE</span>
+                  <strong id="selectedHeight">—</strong>
+                  <small>Mientras más alta, mayor es el riesgo psicosocial.</small>
+                </div>
+              </div>
+              <div class="visual-box visual-width">
+                <span class="visual-symbol" aria-hidden="true">↔</span>
+                <div>
+                  <span class="visual-label">ANCHO DE LA TORRE</span>
+                  <strong id="selectedWidth">—</strong>
+                  <small>Mientras más ancha, mayor es la cantidad de centros evaluados.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p id="selectedReading" class="reading">Haz clic sobre una torre para ver sus datos y entender qué representa su forma.</p>
         </section>
 
         <section class="card method-card">
