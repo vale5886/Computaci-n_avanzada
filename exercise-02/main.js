@@ -189,12 +189,12 @@ function selectTower(mesh) {
   selectedName.textContent = item.actividad;
   selectedRisk.textContent = `${item.riesgoNoOptimo.toFixed(1).replace('.', ',')}%`;
   selectedCenters.textContent = new Intl.NumberFormat('es-CL').format(item.centros);
-  selectedHeight.textContent = `${visual.height.toFixed(2).replace('.', ',')} u`;
-  selectedWidth.textContent = `${visual.width.toFixed(2).replace('.', ',')} u`;
+  selectedHeight.textContent = `${visual.height.toFixed(2).replace('.', ',')} de ${VISUAL_RANGES.height.max}`;
+  selectedWidth.textContent = `${visual.width.toFixed(2).replace('.', ',')} de ${VISUAL_RANGES.width.max}`;
 
   const riskRank = rankOf(item, 'riesgoNoOptimo');
   const centersRank = rankOf(item, 'centros');
-  selectedReading.textContent = `Dentro de las ${dataset.length} actividades, este sector ocupa el puesto ${riskRank} por riesgo no óptimo y el puesto ${centersRank} por cantidad de centros evaluados.`;
+  selectedReading.textContent = `Este sector está en el lugar ${riskRank} de ${dataset.length} por nivel de riesgo y en el lugar ${centersRank} de ${dataset.length} por cantidad de centros evaluados.`;
 }
 
 function selectByActivity(activity) {
