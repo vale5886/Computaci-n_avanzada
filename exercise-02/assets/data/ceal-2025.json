@@ -1,0 +1,27 @@
+{
+  "titulo": "Riesgo psicosocial laboral en Chile — CEAL-SM/SUSESO 2025",
+  "fuente": "Superintendencia de Seguridad Social, Documento de Trabajo N° 27, Tablas 6 y 9",
+  "nota": "El número de centros de trabajo proviene de la Tabla 6. El porcentaje de riesgo no óptimo proviene de la Tabla 9.",
+  "datos": [
+    {"actividad":"Agricultura / ganadería / silvicultura / pesca","centros":905,"riesgoNoOptimo":7.3},
+    {"actividad":"Minería","centros":212,"riesgoNoOptimo":4.7},
+    {"actividad":"Industria manufacturera","centros":1392,"riesgoNoOptimo":13.0},
+    {"actividad":"Electricidad / gas","centros":99,"riesgoNoOptimo":20.2},
+    {"actividad":"Agua / desechos","centros":195,"riesgoNoOptimo":7.7},
+    {"actividad":"Construcción","centros":1442,"riesgoNoOptimo":5.5},
+    {"actividad":"Comercio","centros":3429,"riesgoNoOptimo":18.1},
+    {"actividad":"Transporte / almacenaje","centros":996,"riesgoNoOptimo":11.8},
+    {"actividad":"Hoteles / comida","centros":1283,"riesgoNoOptimo":20.2},
+    {"actividad":"Informática / comunicación","centros":408,"riesgoNoOptimo":14.0},
+    {"actividad":"Servicios financieros","centros":695,"riesgoNoOptimo":8.0},
+    {"actividad":"Inmobiliarias","centros":135,"riesgoNoOptimo":8.9},
+    {"actividad":"Servicios profesionales","centros":881,"riesgoNoOptimo":13.2},
+    {"actividad":"Servicios de apoyo","centros":1939,"riesgoNoOptimo":14.3},
+    {"actividad":"Administración pública","centros":2076,"riesgoNoOptimo":44.0},
+    {"actividad":"Educación","centros":3007,"riesgoNoOptimo":30.9},
+    {"actividad":"Salud humana","centros":1039,"riesgoNoOptimo":42.3},
+    {"actividad":"Asistencia social c/s alojamiento","centros":296,"riesgoNoOptimo":27.0},
+    {"actividad":"Arte / entretención / deporte","centros":84,"riesgoNoOptimo":25.0},
+    {"actividad":"Actividades de organizaciones","centros":399,"riesgoNoOptimo":19.9}
+  ]
+}
