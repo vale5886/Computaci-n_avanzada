@@ -4,6 +4,14 @@ Documenta de manera breve cuándo y para qué utilizaste asistentes de IA. El ob
 
 ## Registro
 
+### 2026-08-21 - Ejercicio 02 visualización CEAL-SM/SUSESO
+
+**Herramienta / agente:** ChatGPT  
+**Qué pedí:** Analizar el informe CEAL-SM/SUSESO 2025, definir una pregunta de diseño con datos y construir una primera visualización tridimensional que respetara escala, normalización y rango visual.  
+**Qué cambió en el proyecto:** Se creó `/exercise-02/` con un dataset local de 19 actividades económicas, tres mappings principales —actividad a posición, riesgo no óptimo a altura y centros evaluados a ancho—, color como refuerzo del riesgo, normalización min-max e interacción mediante selección y ordenamiento.  
+**Qué revisé o corregí manualmente:** Se decidió utilizar los conteos de centros de la Tabla 6 y los porcentajes de riesgo no óptimo de la Tabla 9, documentando la diferencia de totales existente entre ambas tablas.  
+**Qué aprendí / qué error apareció:** Los datos reales no deben traducirse directamente a unidades de la escena; primero se normalizan y luego se mapean a un rango visual que preserve la comparación sin destruir la legibilidad.
+
 ### 2026-08-21 - LAB03 representación de datos
 
 **Herramienta / agente:** ChatGPT  
