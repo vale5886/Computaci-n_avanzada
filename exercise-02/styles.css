@@ -7,6 +7,8 @@
   --text: #f6f6f3;
   --muted: #aaaab5;
   --accent: #e6c94b;
+  --risk-accent: #f08b72;
+  --centers-accent: #72b6f0;
 }
 
 * { box-sizing: border-box; }
@@ -224,11 +226,85 @@ h1 {
   font-weight: 800;
 }
 
+.visual-explainer {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.visual-explainer-title {
+  margin: 0 0 10px;
+  color: #d7d7df;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.visual-explainer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.visual-box {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: start;
+  min-height: 128px;
+  padding: 13px;
+  border: 1px solid #35353d;
+  background: #18181e;
+}
+
+.visual-height { border-top: 3px solid var(--risk-accent); }
+.visual-width { border-top: 3px solid var(--centers-accent); }
+
+.visual-symbol {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #24242c;
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.visual-height .visual-symbol { color: var(--risk-accent); }
+.visual-width .visual-symbol { color: var(--centers-accent); }
+
+.visual-label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.visual-box strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 1.25rem;
+}
+
+.visual-box small {
+  display: block;
+  color: #d2d2da;
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
 .reading,
 .method-card p,
 .caution-card p {
   color: #c9c9d1;
   line-height: 1.55;
+}
+
+.reading {
+  margin-bottom: 0;
 }
 
 .mapping-flow {
@@ -263,6 +339,7 @@ h1 {
 @media (max-width: 620px) {
   .app-shell { padding: 14px; }
   .legend,
-  .metrics { grid-template-columns: 1fr; }
+  .metrics,
+  .visual-explainer-grid { grid-template-columns: 1fr; }
   .scene { min-height: 430px; }
 }
