@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejercicio 02 — Riesgo psicosocial laboral en Chile</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">COMPUTACIÓN AVANZADA · EJERCICIO 02</p>
+        <h1>Riesgo psicosocial laboral en Chile · 2025</h1>
+        <p class="question">¿Qué actividades económicas combinan un mayor nivel de riesgo psicosocial no óptimo y una mayor cantidad de centros de trabajo evaluados?</p>
+      </div>
+      <div class="source-note">
+        <span>Fuente</span>
+        <strong>CEAL-SM/SUSESO 2025</strong>
+        <small>Documento de Trabajo N° 27 · Tablas 6 y 9</small>
+      </div>
+    </header>
+
+    <section class="workspace">
+      <div class="visual-panel">
+        <div class="toolbar" aria-label="Controles de visualización">
+          <button class="sort-button active" data-order="source">Orden fuente</button>
+          <button class="sort-button" data-order="risk">Mayor riesgo</button>
+          <button class="sort-button" data-order="centers">Más centros</button>
+          <label class="sector-picker">
+            <span>Seleccionar sector</span>
+            <select id="sectorSelect"></select>
+          </label>
+        </div>
+
+        <div id="scene" class="scene" aria-label="Visualización tridimensional de actividades económicas"></div>
+
+        <div class="legend">
+          <div><span class="legend-icon tower-icon"></span><strong>Actividad económica</strong> → posición</div>
+          <div><span class="legend-icon height-icon"></span><strong>Riesgo no óptimo</strong> → altura 1–8 u</div>
+          <div><span class="legend-icon width-icon"></span><strong>Centros evaluados</strong> → ancho 0,8–3 u</div>
+          <div><span class="legend-gradient"></span><strong>Color</strong> → refuerzo visual del riesgo</div>
+        </div>
+      </div>
+
+      <aside class="info-panel">
+        <section class="card selected-card">
+          <p class="card-kicker">SECTOR SELECCIONADO</p>
+          <h2 id="selectedName">Selecciona una torre</h2>
+          <dl class="metrics">
+            <div>
+              <dt>Riesgo no óptimo</dt>
+              <dd id="selectedRisk">—</dd>
+            </div>
+            <div>
+              <dt>Centros evaluados</dt>
+              <dd id="selectedCenters">—</dd>
+            </div>
+            <div>
+              <dt>Altura visual</dt>
+              <dd id="selectedHeight">—</dd>
+            </div>
+            <div>
+              <dt>Ancho visual</dt>
+              <dd id="selectedWidth">—</dd>
+            </div>
+          </dl>
+          <p id="selectedReading" class="reading">Haz clic sobre una torre para ver sus datos reales y su traducción visual.</p>
+        </section>
+
+        <section class="card method-card">
+          <p class="card-kicker">ESCALA Y NORMALIZACIÓN</p>
+          <h2>Dato real → rango visual útil</h2>
+          <p>Los valores reales no se usan directamente como metros. Primero se normalizan entre 0 y 1 y luego se traducen a una escala visual comparable.</p>
+          <div class="mapping-flow">
+            <span>dato real</span><b>→</b><span>normalizar</span><b>→</b><span>mapear</span><b>→</b><span>rango visual</span>
+          </div>
+          <p class="formula"><strong>Riesgo:</strong> 4,7–44,0% → altura 1–8 unidades.</p>
+          <p class="formula"><strong>Centros:</strong> 84–3.429 → ancho 0,8–3 unidades.</p>
+        </section>
+
+        <section class="card caution-card">
+          <p class="card-kicker">LECTURA RESPONSABLE</p>
+          <p>La visualización apoya la comparación y la priorización exploratoria. No constituye una recomendación automática de intervención ni una clasificación oficial de SUSESO.</p>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
